@@ -1,0 +1,27 @@
+
+  .search-submit-button
+{
+    text-align: center;
+    font-size: 19px;
+    color: white;
+    background-color: green;
+    width: 4em;
+    border-radius: 4px;
+    padding: 0.2em;
+    display: inline-flex;
+    margin-left: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.3);
+    height:2em;
+  }
+  .search-content{
+      color: charcoal;
+      background-color:white;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+      height:3em;
+      width:18em;
+      margin-left: 6em;
+      margin-top: 1em;
+    }
