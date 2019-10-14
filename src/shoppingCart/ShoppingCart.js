@@ -7,7 +7,7 @@ class ShoppingCart extends Component {
        this.temp=[]
 
        this.state = {
-         res:[],  
+         dataInCart:[],  
          Qty:0,  
          datashop: cartData  
                    
@@ -16,21 +16,21 @@ class ShoppingCart extends Component {
 
     componentWillMount()
     {    
-        this.state.res=localStorage.getItem('BooksIds');
-        this.state.res=JSON.parse(this.state.res);
-       console.log("data in  res ~~~~~~~~cart:=",this.state.res[0]);
+        this.state.dataInCart=localStorage.getItem('BooksIds');
+        this.state.dataInCart=JSON.parse(this.state.dataInCart);
+       console.log("data in  dataInCart ~~~~~~~~cart:=",this.state.dataInCart[0]);
 
     }
     componentDidUpdate(){
-        let temp=JSON.stringify(this.state.res);
+        let temp=JSON.stringify(this.state.dataInCart);
         localStorage.setItem("BooksIds",temp)
 
     }
 
     increaseQty = (id) => {
         this.props.cartHandler(this.props.qty,1);
-        this.temp=this.state.res;
-        this.state.res.map((item)=>{
+        this.temp=this.state.dataInCart;
+        this.state.dataInCart.map((item)=>{
             if(item[0]===id){
                 item[1]=item[1]+1;
             }
@@ -39,7 +39,7 @@ class ShoppingCart extends Component {
         )
         this.setState(
             {
-                res:this.temp
+             dataInCart:this.temp
             }
         );
          
@@ -48,15 +48,15 @@ class ShoppingCart extends Component {
         this.temp=this.temp.filter(item=>item[0]!==id);
         this.setState(
             {
-                res:this.temp
+             dataInCart:this.temp
             }
         );
      }
     
     decreaseQty = (id) => {
         
-        this.temp=this.state.res;
-        this.state.res.map((item)=>{
+        this.temp=this.state.dataInCart;
+        this.state.dataInCart.map((item)=>{
             if(item[0]===id){
                 if(item[1]===1)
                 {
@@ -74,11 +74,19 @@ class ShoppingCart extends Component {
         )
         this.setState(
             {
-                res:this.temp
+             dataInCart:this.temp
             }
         );
        }   
-    
+       billing=()=>{
+           alert("in billing ")
+       }
+       buyNow=()=>{
+         let loginStatus =JSON.parse(localStorage.getItem("loginStatus"))
+         
+         //alert(localStorage.getItem("loginStatus"))
+         loginStatus===true ? this.billing():alert("login First")
+       }
     render() {
         const getBooksIdData  = localStorage.getItem('BooksIds');
         const parseBooksIdData = JSON.parse(getBooksIdData) || {};
@@ -103,10 +111,10 @@ class ShoppingCart extends Component {
                     </tr>
                    
                     { // add the local storage values only
-                        this.state.res.map((items)=>
+                        this.state.dataInCart.map((items)=>
                          {
                           /************************************************ */   
-                            console.log("res",items);
+                            console.log( "dataInCart",items);
                             
                            return (cartData.map((data1) => {
                               if(items[0]===data1.id)
@@ -183,7 +191,9 @@ class ShoppingCart extends Component {
                    
                     
                     </table>
+                    <button className="BuyNow-button" onClick={this.buyNow}>BUY NOW</button>
                     </div>
+                    
                     
                 
 

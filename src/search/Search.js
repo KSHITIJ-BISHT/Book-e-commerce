@@ -22,7 +22,7 @@ class Search extends Component {
         return (
             <div className="Search-Bar">
             <input className="search-content" type ="text" value={this.state.search} onChange={this.onChange} name="search"></input>
-            <button className="search-submit-button" type="submit">Search Book</button>
+            <h3>Search Book</h3>
          </div>
         )
     }

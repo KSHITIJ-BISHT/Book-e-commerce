@@ -13,14 +13,25 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
  class App extends Component {
   constructor(props) {
     super(props)
-  
+    this.initialCount=0
+    this.totalCount=JSON.parse(localStorage.getItem("BooksIds"))
+    localStorage.setItem("loginStatus",false)
+
     this.state = {
-      qty:0,
+      qty:this.totalCount?this.totalItemCount():0,
       username: '',
       password:'',
       loggedIn:false
   }
   }
+  totalItemCount=()=>{
+    
+    let items=JSON.parse(localStorage.getItem("BooksIds"))
+    const reducer = (accumulator, currentValue) => accumulator + currentValue[1];
+    let totalQty= items.reduce(reducer,0)
+    return totalQty
+  }
+  
   loginHandler=(username,password)=>
   {
     this.setState({
@@ -44,7 +55,6 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
   
   render() {
     return (
-      
       <div className="App">
       
       <Router>

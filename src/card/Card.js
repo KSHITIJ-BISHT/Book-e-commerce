@@ -119,7 +119,7 @@ class Card extends Component {
                  this.state.BookData.map((Data) =>
                  {
                      return <div className="card">
-                       <img className="card-img" src="https://www.w3schools.com/w3images/avatar5.png" alt="Denim Jeans " />
+                       <img className="card-img" src="https://images.pexels.com/photos/51342/books-education-school-literature-51342.jpeg" alt="books" />
                        <h1 >{Data.name}</h1>
                        <p class="price">Price:Rs.{Data.price}</p>
                        <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
